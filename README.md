@@ -1,7 +1,11 @@
 
-# 📊 Customer Churn Prediction
+# Customer Churn Prediction
 
 This project focuses on predicting customer churn using a telecom dataset. It leverages several machine learning algorithms to evaluate performance and identify the most effective model for predicting whether a customer will leave the service.
+
+This project is a re-implementation of the research done by Kahti _et al.,_ 2024.
+
+The report can be found 
 
 ---
 
