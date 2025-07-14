@@ -15,67 +15,66 @@ Customer churn is a critical problem in the telecom industry. Accurately predict
 
 ---
 
-## 2. Data Source
+## Data Source
 
 - **File**: [WA_Fn-UseC_-Telco-Customer-Churn.csv](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
 - **Observations**: 7,043 customer records
 - **Features**:
- 0   customerID        7043 non-null   object 
- 1   gender            7043 non-null   object 
- 2   SeniorCitizen     7043 non-null   int64  
- 3   Partner           7043 non-null   object 
- 4   Dependents        7043 non-null   object 
- 5   tenure            7043 non-null   int64  
- 6   PhoneService      7043 non-null   object 
- 7   MultipleLines     7043 non-null   object 
- 8   InternetService   7043 non-null   object 
- 9   OnlineSecurity    7043 non-null   object 
- 10  OnlineBackup      7043 non-null   object 
- 11  DeviceProtection  7043 non-null   object 
- 12  TechSupport       7043 non-null   object 
- 13  StreamingTV       7043 non-null   object 
- 14  StreamingMovies   7043 non-null   object 
- 15  Contract          7043 non-null   object 
- 16  PaperlessBilling  7043 non-null   object 
- 17  PaymentMethod     7043 non-null   object 
- 18  MonthlyCharges    7043 non-null   float64
- 19  TotalCharges      7043 non-null   object 
+   1. customerID
+   2. gender       
+   3. SeniorCitizen  
+   4. Partner 
+   5. Dependents
+   6. tenure
+   7. PhoneService
+   8. MultipleLines
+   9. InternetService
+   10. OnlineSecurity
+   11. OnlineBackup
+   12. DeviceProtection
+   13. TechSupport
+   14. StreamingTV 
+   15. StreamingMovies 
+   16. Contract
+   17. PaperlessBilling
+   18. PaymentMethod
+   19. MonthlyCharges
+   20. TotalCharges
 - **Target**: `Churn` (Yes = churned, No = retained)
 
 ---
 
-## 3. 🧰 Tools and Libraries
+## Tools and Libraries
 
 - `pandas`, `numpy` – data processing
 - `seaborn`, `matplotlib` – visualization
 - `scikit-learn` – machine learning and evaluation
-- `xgboost` – boosted gradient tree classifier
+- `statsmodels` – multi-collinearity test
 - `imblearn` – oversampling using SMOTE
 
 ---
 
-## 4. 📊 Exploratory Data Analysis (EDA)
+## Exploratory Data Analysis (EDA)
 
 The EDA includes:
 - Viewing dataset structure using `df.info()` and `.head()`
 - Identifying missing or inconsistent values
 - Visualizing churn by contract type, tenure, and payment method
-- Confirming that `TotalCharges` can be derived from `MonthlyCharges` and `tenure`
 
 ---
 
-## 5. 🧹 Data Processing
+## Data Processing
 
 Steps taken:
 - Converted `TotalCharges` to numeric
-- Removed rows with missing values
 - Dropped `customerID` as it is not useful for prediction
 - Categorical features were encoded appropriately
 - Class imbalance was handled using **SMOTE** to oversample the minority class
+- Feature scaling using **StandardScaler**
 
 ---
 
-## 6. 🛠️ Feature Engineering
+## Feature Engineering
 
 - Removed `TotalCharges` due to redundancy (correlated with `tenure` × `MonthlyCharges`)
 - Created dummy variables for categorical features
@@ -83,7 +82,7 @@ Steps taken:
 
 ---
 
-## 7. 🧠 Model Approach
+## Model Approach
 
 ### Models Trained:
 - Logistic Regression
@@ -97,15 +96,15 @@ Steps taken:
 - XGBoost
 
 ### Cross-Validation:
-- Used `StratifiedKFold` with 5 splits
+- Used `StratifiedKFold` with 10 splits
 - Trained models on balanced data from SMOTE
 - Collected and compared evaluation metrics: accuracy, precision, recall, F1, F2
 
 ---
 
-## 8. 📈 Model Evaluation
+## Model Evaluation
 
-### 🔥 Best Performing Model: **Random Forest**
+### Best Performing Model: **Random Forest**
 
 **Confusion Matrix:**
 ```
@@ -116,7 +115,7 @@ Actual |  0  | 4404 |  770 |
        |  1  |  760 | 4414 |
 ```
 
-### 🔢 Metrics:
+### Metrics:
 | Metric     | Value    |
 |------------|----------|
 | Accuracy   | 0.8560   |
@@ -130,15 +129,14 @@ Actual |  0  | 4404 |  770 |
 
 ---
 
-## ✅ Conclusion
+## Conclusion
 
 - Random Forest was selected as the best model due to its high accuracy and F1 score.
 - The project successfully demonstrates how to prepare data, balance classes, train multiple classifiers, and evaluate them robustly using cross-validation.
 
 ---
 
-## 📌 Future Improvements
+## Future Improvements
 
 - Perform hyperparameter tuning using GridSearchCV
-- Use SHAP values for feature importance and explainability
 - Deploy the model using Flask or Streamlit
