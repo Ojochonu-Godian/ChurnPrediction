@@ -5,17 +5,17 @@ This project focuses on predicting customer churn using a telecom dataset. It le
 
 This project is a re-implementation of the research done by Kahti _et al.,_ 2024.
 
-The report can be found 
+The report can be found [Here](https://www.researchgate.net/publication/382334373_An_analysis_on_classification_models_for_customer_churn_prediction)
 
 ---
 
-## 1. 🔍 Project Overview
+## Project Overview
 
 Customer churn is a critical problem in the telecom industry. Accurately predicting churn enables businesses to take preemptive action to retain customers. In this project, multiple classification models are trained and compared using cross-validation. The best-performing model is further evaluated with confusion matrix and ROC analysis.
 
 ---
 
-## 2. 🗂️ Data Source
+## 2. Data Source
 
 - **File**: `WA_Fn-UseC_-Telco-Customer-Churn.csv`
 - **Observations**: ~7,000 customer records
